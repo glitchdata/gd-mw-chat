@@ -4,15 +4,8 @@
     "license": "MIT",
     "description": "A simple chatbot special page backed by a configurable service endpoint.",
     "require": {
-        "php": ">=7.4",
-        "mediawiki/core": ">=1.39"
+        "php": ">=7.4"
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://releases.wikimedia.org/composer/"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "MediaWiki\\Extension\\Chatbot\\": "includes/"
