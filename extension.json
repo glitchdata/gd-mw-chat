@@ -16,6 +16,9 @@
     "AutoloadNamespaces": {
         "MediaWiki\\Extension\\Chatbot\\": "includes/"
     },
+    "Hooks": {
+        "BeforePageDisplay": "MediaWiki\\Extension\\Chatbot\\Hooks::onBeforePageDisplay"
+    },
     "ServiceWiringFiles": [
         "includes/ServiceWiring.php"
     ],
