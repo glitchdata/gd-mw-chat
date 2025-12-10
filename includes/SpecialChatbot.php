@@ -28,17 +28,17 @@ class SpecialChatbot extends SpecialPage {
         $sendLabel = $this->msg( 'chatbot-send-button' )->escaped();
         $outputLabel = $this->msg( 'chatbot-output-label' )->escaped();
 
-        return Html::rawElement( 'div', [ 'class' => 'chatbot-container' ],
-            Html::element( 'label', [ 'for' => 'chatbot-input' ], $promptLabel ) .
-            Html::element( 'textarea', [
+        return \Html::rawElement( 'div', [ 'class' => 'chatbot-container' ],
+            \Html::element( 'label', [ 'for' => 'chatbot-input' ], $promptLabel ) .
+            \Html::element( 'textarea', [
                 'id' => 'chatbot-input',
                 'placeholder' => $placeholder,
                 'rows' => 4
             ], '' ) .
-            Html::element( 'button', [ 'class' => 'chatbot-send', 'type' => 'button' ], $sendLabel ) .
-            Html::rawElement( 'div', [ 'class' => 'chatbot-output' ],
-                Html::element( 'div', [ 'class' => 'chatbot-output__label' ], $outputLabel ) .
-                Html::element( 'div', [ 'class' => 'chatbot-output__log' ], '' )
+            \Html::element( 'button', [ 'class' => 'chatbot-send', 'type' => 'button' ], $sendLabel ) .
+            \Html::rawElement( 'div', [ 'class' => 'chatbot-output' ],
+                \Html::element( 'div', [ 'class' => 'chatbot-output__label' ], $outputLabel ) .
+                \Html::element( 'div', [ 'class' => 'chatbot-output__log' ], '' )
             )
         );
     }
