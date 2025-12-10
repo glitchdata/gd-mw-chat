@@ -16,7 +16,8 @@ class SpecialChatbot extends SpecialPage {
 
         $out = $this->getOutput();
         $out->addModules( 'ext.chatbot' );
-        $out->setPageTitle( $this->msg( 'chatbot-special-title' ) );
+        // setPageTitle expects a plain string, not a Message object.
+        $out->setPageTitle( $this->msg( 'chatbot-special-title' )->text() );
 
         $out->addHTML( $this->buildScaffold() );
     }
