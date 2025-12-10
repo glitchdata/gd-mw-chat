@@ -23,23 +23,20 @@ class SpecialChatbot extends SpecialPage {
     }
 
     private function buildScaffold(): string {
-        $promptLabel = $this->msg( 'chatbot-prompt-label' )->escaped();
-        $placeholder = $this->msg( 'chatbot-prompt-placeholder' )->escaped();
-        $sendLabel = $this->msg( 'chatbot-send-button' )->escaped();
-        $outputLabel = $this->msg( 'chatbot-output-label' )->escaped();
+        $promptLabel = htmlspecialchars( $this->msg( 'chatbot-prompt-label' )->text(), ENT_QUOTES );
+        $placeholder = htmlspecialchars( $this->msg( 'chatbot-prompt-placeholder' )->text(), ENT_QUOTES );
+        $sendLabel = htmlspecialchars( $this->msg( 'chatbot-send-button' )->text(), ENT_QUOTES );
+        $outputLabel = htmlspecialchars( $this->msg( 'chatbot-output-label' )->text(), ENT_QUOTES );
 
-        return \Html::rawElement( 'div', [ 'class' => 'chatbot-container' ],
-            \Html::element( 'label', [ 'for' => 'chatbot-input' ], $promptLabel ) .
-            \Html::element( 'textarea', [
-                'id' => 'chatbot-input',
-                'placeholder' => $placeholder,
-                'rows' => 4
-            ], '' ) .
-            \Html::element( 'button', [ 'class' => 'chatbot-send', 'type' => 'button' ], $sendLabel ) .
-            \Html::rawElement( 'div', [ 'class' => 'chatbot-output' ],
-                \Html::element( 'div', [ 'class' => 'chatbot-output__label' ], $outputLabel ) .
-                \Html::element( 'div', [ 'class' => 'chatbot-output__log' ], '' )
-            )
-        );
+        // Build minimal HTML without relying on Html helper to avoid class resolution issues.
+        return '<div class="chatbot-container">'
+            . '<label for="chatbot-input">' . $promptLabel . '</label>'
+            . '<textarea id="chatbot-input" placeholder="' . $placeholder . '" rows="4"></textarea>'
+            . '<button class="chatbot-send" type="button">' . $sendLabel . '</button>'
+            . '<div class="chatbot-output">'
+            .   '<div class="chatbot-output__label">' . $outputLabel . '</div>'
+            .   '<div class="chatbot-output__log"></div>'
+            . '</div>'
+            . '</div>';
     }
 }
