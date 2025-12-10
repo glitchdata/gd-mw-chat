@@ -1,0 +1,15 @@
+{
+    "name": "acme/chatbot",
+    "type": "mediawiki-extension",
+    "license": "MIT",
+    "description": "A simple chatbot special page backed by a configurable service endpoint.",
+    "require": {
+        "php": ">=7.4",
+        "mediawiki/mediawiki": ">=1.39"
+    },
+    "autoload": {
+        "psr-4": {
+            "MediaWiki\\Extension\\Chatbot\\": "includes/"
+        }
+    }
+}

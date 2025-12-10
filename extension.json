@@ -1,0 +1,69 @@
+{
+    "name": "Chatbot",
+    "type": "extension",
+    "manifest_version": 2,
+    "version": "0.1.0",
+    "author": ["Your Name"],
+    "url": "https://example.com/Chatbot",
+    "license-name": "MIT",
+    "descriptionmsg": "chatbot-desc",
+    "requires": {
+        "MediaWiki": ">= 1.39.0"
+    },
+    "MessagesDirs": {
+        "Chatbot": ["i18n"]
+    },
+    "AutoloadNamespaces": {
+        "MediaWiki\\Extension\\Chatbot\\": "includes/"
+    },
+    "ServiceWiringFiles": [
+        "includes/ServiceWiring.php"
+    ],
+    "SpecialPages": {
+        "Chatbot": "MediaWiki\\Extension\\Chatbot\\SpecialChatbot"
+    },
+    "ResourceModules": {
+        "ext.chatbot": {
+            "scripts": [
+                "resources/ext.chatbot.js"
+            ],
+            "styles": [
+                "resources/ext.chatbot.css"
+            ],
+            "dependencies": [
+                "mediawiki.api",
+                "mediawiki.util"
+            ],
+            "targets": ["desktop", "mobile"]
+        }
+    },
+    "APIModules": {
+        "chatbot": {
+            "class": "MediaWiki\\Extension\\Chatbot\\ApiChatbot",
+            "factory": "MediaWiki\\Extension\\Chatbot\\ApiChatbot::factory",
+            "path": "includes/ApiChatbot.php"
+        }
+    },
+    "config": {
+        "ChatbotEndpointUrl": {
+            "value": "",
+            "description": "External chatbot inference endpoint (POST). If empty, falls back to local echo stub.",
+            "public": false
+        },
+        "ChatbotApiToken": {
+            "value": "",
+            "description": "Optional bearer token for the external chatbot endpoint.",
+            "public": false
+        },
+        "ChatbotSystemPrompt": {
+            "value": "You are a helpful wiki assistant.",
+            "description": "Default system prompt forwarded to the chatbot backend.",
+            "public": true
+        },
+        "ChatbotMaxTokens": {
+            "value": 256,
+            "description": "Max tokens requested from the chatbot backend.",
+            "public": true
+        }
+    }
+}

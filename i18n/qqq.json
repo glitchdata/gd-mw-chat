@@ -1,0 +1,15 @@
+{
+    "@metadata": {
+        "authors": [
+            "Your Name"
+        ]
+    },
+    "chatbot-desc": "Short description shown on Special:Version.",
+    "chatbot-special-title": "Title of the Special:Chatbot page.",
+    "chatbot-prompt-label": "Label for the prompt textarea.",
+    "chatbot-prompt-placeholder": "Placeholder text displayed inside the prompt textarea.",
+    "chatbot-send-button": "Text for the send button.",
+    "chatbot-output-label": "Heading for the response log area.",
+    "chatbot-loading": "Button text shown while the chatbot processes the request.",
+    "chatbot-error": "Fallback error message displayed when the backend fails."
+}

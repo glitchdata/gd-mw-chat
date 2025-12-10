@@ -1,0 +1,15 @@
+{
+    "@metadata": {
+        "authors": [
+            "Your Name"
+        ]
+    },
+    "chatbot-desc": "Provides a simple chatbot special page powered by a configurable backend.",
+    "chatbot-special-title": "Chatbot",
+    "chatbot-prompt-label": "Prompt",
+    "chatbot-prompt-placeholder": "Ask the wiki assistant...",
+    "chatbot-send-button": "Send",
+    "chatbot-output-label": "Conversation",
+    "chatbot-loading": "Thinking…",
+    "chatbot-error": "Sorry, something went wrong. Please try again."
+}
