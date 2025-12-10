@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\Chatbot;
 
-use Html;
 use SpecialPage;
 
 class SpecialChatbot extends SpecialPage {
@@ -29,14 +28,26 @@ class SpecialChatbot extends SpecialPage {
         $outputLabel = htmlspecialchars( $this->msg( 'chatbot-output-label' )->text(), ENT_QUOTES );
 
         // Build minimal HTML without relying on Html helper to avoid class resolution issues.
-        return '<div class="chatbot-container">'
-            . '<label for="chatbot-input">' . $promptLabel . '</label>'
-            . '<textarea id="chatbot-input" placeholder="' . $placeholder . '" rows="4"></textarea>'
-            . '<button class="chatbot-send" type="button">' . $sendLabel . '</button>'
-            . '<div class="chatbot-output">'
-            .   '<div class="chatbot-output__label">' . $outputLabel . '</div>'
-            .   '<div class="chatbot-output__log"></div>'
-            . '</div>'
-            . '</div>';
+            $title = htmlspecialchars( $this->msg( 'chatbot-special-title' )->text(), ENT_QUOTES );
+
+            // Floating chat bubble with toggle.
+            return '<div class="chatbot-widget" aria-live="polite">'
+                . '<button class="chatbot-toggle" type="button" aria-expanded="false">' . $title . '</button>'
+                . '<div class="chatbot-panel" aria-hidden="true">'
+                .   '<div class="chatbot-panel__header">'
+                .     '<div class="chatbot-title">' . $title . '</div>'
+                .     '<button class="chatbot-close" type="button" aria-label="Close">x</button>'
+                .   '</div>'
+                .   '<div class="chatbot-output">'
+                .     '<div class="chatbot-output__label">' . $outputLabel . '</div>'
+                .     '<div class="chatbot-output__log"></div>'
+                .   '</div>'
+                .   '<div class="chatbot-inputbar">'
+                .     '<label class="chatbot-input__label" for="chatbot-input">' . $promptLabel . '</label>'
+                .     '<textarea class="chatbot-input" id="chatbot-input" placeholder="' . $placeholder . '" rows="3"></textarea>'
+                .     '<button class="chatbot-send" type="button">' . $sendLabel . '</button>'
+                .   '</div>'
+                . '</div>'
+                . '</div>';
     }
 }
